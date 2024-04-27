@@ -4,10 +4,10 @@ session_start();
 
 include 'connect.php'; // Include your database connection file
 
-// Update the following variables with your Google OAuth credentials
-$google_oauth_client_id = '267771505042-b980sbufa0fi0ksto0b2km7ev84i2qg5.apps.googleusercontent.com';
-$google_oauth_client_secret = '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';
-$google_oauth_redirect_uri = 'http://localhost/ecoLogin/google-oauth.php';
+// Update the following variables with YOUR Google OAuth credentials
+$google_oauth_client_id = '970783322336-7ba9kgdcb1a5ab1v7rv9p4j0cs0ae3b5.apps.googleusercontent.com';
+$google_oauth_client_secret = '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';
+$google_oauth_redirect_uri = 'http://localhost/ecorise/ecorise_web/profile%20page/google-oauth.php'; //Everyone should change this!! Locate your own google-oauth.php file
 $google_oauth_version = 'v3';
 
 // If the user is not already logged in via Google and the code parameter is present
@@ -43,14 +43,20 @@ if (!isset($_SESSION['google_loggedin']) && isset($_GET['code']) && !empty($_GET
 
         $profile = json_decode($response, true);
 
-        // Make sure the profile data exists
+        // Making sure if the profile data exists
         if (isset($profile['email'])) {
             // Authenticate the user
             session_regenerate_id();
             $_SESSION['google_loggedin'] = TRUE;
-            $_SESSION['google_email'] = $profile['email'];
-            // Redirect to profile page or perform any other action
-            header('Location: home.php');
+            $_SESSION['google_email'] = $profile['email']; // Storing user's email in session variable
+            $_SESSION['fullname'] = $profile['name']; // Storing user's full name in session variable
+
+            // Store the profile picture URL in the session if it's available
+            if (isset($profile['picture'])) {
+                $_SESSION['google_picture'] = $profile['picture'];
+            }
+            // Redirect to the main page
+            header('Location: index.php');
             exit;
         } else {
             exit('Could not retrieve profile information! Please try again later!');
