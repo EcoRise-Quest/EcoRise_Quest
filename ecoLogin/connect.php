@@ -1,17 +1,13 @@
-<?php 
+<?php
+$serverName = "127.0.0.1"; // Replace it with localhost
+$port = 3307; // Replace with your MySQL server's port if it's not the default or just remove it
+$username = "root";
+$password = "";
+$dbname = "ecorise"; //replace it with your database name
 
-// Database connection parameters
-$host="localhost";  // Hostname of the database server
-$user="root";       // Username for accessing the database
-$pass= "";          // Password for accessing the database
-$db="login";        // Name of the database
+$conn = mysqli_connect($serverName, $username, $password, $dbname, $port);
 
-// Establishing connection to the database
-$conn=mysqli_connect($host,$user,$pass,$db);
-
-// Checking if connection was successful
-if($conn->connect_error){
-    echo "Failed to connect DB: " . $conn->connect_error; // Output error message if connection fails
+if(!$conn){
+    die("Connection failed: " . mysqli_connect_error());
 }
-
 ?>
