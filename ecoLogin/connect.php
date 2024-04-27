@@ -1,6 +1,6 @@
 <?php
 $serverName = "127.0.0.1"; // Replace it with localhost
-$port = 3307; // Replace with your MySQL server's port if it's not the default or just remove it
+$port = 3307; // Replace with your MySQL server's port if it's not default or just remove it
 $username = "root";
 $password = "";
 $dbname = "ecorise"; //replace it with your database name
