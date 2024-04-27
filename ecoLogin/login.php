@@ -1,16 +1,15 @@
 <!DOCTYPE html> <!-- Declares the document type and version of HTML -->
-<html> <!-- Root element of the HTML document -->
+<html5 lang="en" dir="ltr"> <!-- Root element of the HTML document -->
 <head>
-	<title>Ecorise Quest</title> <!-- Title of the webpage -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0">
+	<title>Ecorise Quest 🍀</title> <!-- Title of the webpage -->
     <!-- Linking the Font Awesome library for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 	<!-- Linking an external CSS file named "style1.css" -->
 	<link rel="stylesheet" type="text/css" href="style1.css">
 </head>
 <body>
-	<nav>
-	</nav> <!-- Navigation section (empty in this case) -->
-    
     <!-- SIGN UP SECTION -->
     <div class="container" id="signup" style="display: none ;"> <!-- Container for sign-up form (initially hidden) -->
         <h1 class="form-title">Create an Account</h1> <!-- Heading for the sign-up form -->
@@ -80,12 +79,12 @@
     <div class="right" id="signIn"> <!-- Container for additional content (image and text) -->
         <p class="txt">Ready to take on eco-friendly challenges?
             <br>Log in to Ecorise Quest and join our community of sustainability champions!</p> <!-- Text encouraging users to join -->
-        <img src="bg2.jpg" alt=""> <!-- Image -->
+        <img src="images/bg2.jpg" alt="Background image"> <!-- Image -->
     </div>
    
     <br>
     
-    <!-- Including JavaScript file -->
-    <script src="script.js"></script> <!-- Script for dynamic behavior -->
+    <!-- Including JavaScript file, make sure to locate your own javascript path correctly -->
+    <script src="javascripts/script.js"></script> <!-- Script for dynamic behavior -->
 </body>
-</html> <!-- Closing tags for HTML document -->
+</html5> <!-- Closing tags for HTML document -->
