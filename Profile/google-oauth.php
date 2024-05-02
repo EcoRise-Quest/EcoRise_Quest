@@ -54,6 +54,36 @@ if (!isset($_SESSION['google_loggedin']) && isset($_GET['code']) && !empty($_GET
             // Store the profile picture URL in the session if it's available
             if (isset($profile['picture'])) {
                 $_SESSION['google_picture'] = $profile['picture'];
+
+                // Check if the user's email is already in the database
+                $sql = "SELECT * FROM users WHERE email = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("s", $profile['email']);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    // If the user's email is found, update the user's profile picture in the database
+                    $sql = "UPDATE users SET image = ? WHERE email = ?";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("ss", $profile['picture'], $profile['email']);
+                    $stmt->execute();
+
+                    // Fetch the user's id from the database and store it in the session
+                    $row = $result->fetch_assoc();
+                    $_SESSION['id'] = $row['id'];
+                } else {
+                    // If the user's email is not found, insert a new row into the users table
+                    $sql = "INSERT INTO users (fullname, email, image) VALUES (?, ?, ?)";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("sss", $profile['name'], $profile['email'], $profile['picture']);
+                    $stmt->execute();
+
+                    // Set the session id to the id of the newly inserted user
+                    $_SESSION['id'] = $conn->insert_id;
+                }
+
+                $stmt->close();
             }
             // Redirect to the main page
             header('Location: index.php');
