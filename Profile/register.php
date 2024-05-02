@@ -14,8 +14,13 @@ if (isset($_POST['signUp'])) { // Checking if the sign-up form is submitted
         echo "Email Address already Exists!"; // Displaying an error message if email already exists
     } else {
         // Query to insert user's data into the database
-        $insertQuery = "INSERT INTO users(fullname,email,password) VALUES ('$name','$email','$password')";
+        $insertQuery = "INSERT INTO users(fullname,email,password,image) VALUES ('$name','$email','$password','profile.png')";
         if ($conn->query($insertQuery) == TRUE) { // Executing the query and checking if insertion is successful
+            session_start(); // Starting a session
+            $_SESSION['id'] = $conn->insert_id; // Storing user's id in session variable
+            $_SESSION['fullname'] = $name; // Storing user's full name in session variable
+            $_SESSION['email'] = $email; // Storing user's email in session variable
+            $_SESSION['image'] = 'profile.png'; // Set the default profile picture
             header("location: login.php"); // Redirecting user to the login page after successful sign-up
         } else {
             echo "Error:" . $conn->error; // Displaying an error message if insertion fails
@@ -38,8 +43,10 @@ if (isset($_POST["signIn"])) { // Checking if the sign-in form is submitted
     if ($result->num_rows > 0) { // Checking if user exists in the database
         session_start(); // Starting a session
         $row = $result->fetch_assoc(); // Fetching user's data
+        $_SESSION['id'] = $row['id']; // Storing user's id in session variable
         $_SESSION['fullname'] = $row['fullname']; // Storing user's full name in session variable
         $_SESSION['email'] = $row['email']; // Storing user's email in session variable
+        $_SESSION['image'] = $row['image']; // Storing user's image in session variable
         header("Location: index.php"); // Redirecting user to the homepage after successful sign-in
         exit(); // Exiting the script
     } else {
