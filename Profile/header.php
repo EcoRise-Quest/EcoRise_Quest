@@ -1,6 +1,6 @@
 <?php
 session_start();
-include ('connect.php');
+include ('./config/constants.php'); //change the path of the file 
 ?>
 
 <!DOCTYPE html>
@@ -23,30 +23,38 @@ include ('connect.php');
         <div class="logo"><a href="index.php">ECORISE QUEST</a></div> <!--for logo-->
         <nav class="navigation-bar">
             <ul>
-                <li><a href="#">Challenges</a></li>
-                <li><a href="forum.php">Our Community</a></li>
-                <li><a href="#">About Us</a></li>
-
-                <!--Profile login-->
-                <?php
-                // Check if the user is logged in
-                if (isset($_SESSION['google_loggedin'])) {
-                    // Display the Google profile image if the user is logged in with Google
-                    echo '<li><a href="profile.php"><img src="' . $_SESSION['google_picture'] . '" alt="Profile Image"></a></li>';
-                } elseif (isset($_SESSION['email'])) {
-                    // Display a default profile image if the user is logged in with email
-                    if (isset($_SESSION['image']) && !empty($_SESSION['image'])) {
-                        echo '<li><a href="profile.php"><img src="images/' . $_SESSION['image'] . '" alt="Profile Image"></a></li>';
+                <input type = "checkbox" id="check">
+                <span class= "menu">
+                    <li><a href="#">Challenges</a></li>
+                    <li><a href="forum.php">Our Community</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <label for="check" class = "close_menu"><i class = "fas fa-times"></i></label>
+                    
+                    <!--Profile login-->
+                    <?php
+                    // Check if the user is logged in
+                    if (isset($_SESSION['google_loggedin'])) {
+                        // Display the Google profile image if the user is logged in with Google
+                        echo '<li><a href="profile.php"><span>Profile</span><img src="' . $_SESSION['google_picture'] . '" alt="Profile Image"></a></li>';
+                    } elseif (isset($_SESSION['email'])) {
+                        // Display a default profile image if the user is logged in with email
+                        if (isset($_SESSION['image']) && !empty($_SESSION['image'])) {
+                            echo '<li><a href="profile.php"><span>Profile</span><img src="img/' . $_SESSION['image'] . '" alt="Profile Image"></a></li>';
+                        } else {
+                            echo '<li><a href="profile.php"><span>Profile</span><img src="img/profile.png" alt="Profile Image"></a></li>'; //default image
+                        }
                     } else {
-                        echo '<li><a href="profile.php"><img src="images/profile.png" alt="Profile Image"></a></li>'; //default image
+                        // Display the login button if the user is not logged in
+                        echo '<li><a href="login.php">Login</a></li>';
                     }
-                } else {
-                    // Display the login button if the user is not logged in
-                    echo '<li><a href="login.php">Login</a></li>';
-                }
-                ?>
+                    ?>
+                </span>
+                <label for="check" class = "open_menu"><i class = "fas fa-bars"></i></label>
             </ul>
         </nav>
     </header>
 </body>
 </html5>
+
+
+
