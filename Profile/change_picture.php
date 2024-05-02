@@ -41,13 +41,18 @@ if (isset($_POST['submit'])) {
         $newImageName = $name . " - " . date("Y.m.d") . " - " . date("h.i.sa");
 
         $newImageName .= "." . $imageExtension;
+        // This is where you update the user's profile picture in the database
         $query = "UPDATE users SET image = '$newImageName' WHERE id = $id";
-        mysqli_query($conn, $query);
-        move_uploaded_file($tmpName, 'images/' . $newImageName);
-        $_SESSION['image'] = $newImageName; // Update the session data
-        echo '<script>alert("Profile picture updated successfully!");</script>';
-        header('Location: profile.php'); // Redirect to profile.php
-        exit();
+        if (mysqli_query($conn, $query)) {
+            // The database was updated successfully, now update the session variable
+            $_SESSION['image'] = $newImageName;
+            move_uploaded_file($tmpName, 'images/' . $newImageName);
+            echo '<script>alert("Profile picture updated successfully!");</script>';
+            header('Location: profile.php'); // Redirect to profile.php
+            exit();
+        } else {
+            echo "Error updating record: " . $conn->error;
+        }
     }
 }
 ?>
@@ -63,6 +68,12 @@ if (isset($_POST['submit'])) {
                 <div class="circle">
                     <input type="hidden" name="id" value="<?php echo $id; ?>" />
                     <input type="hidden" name="fullname" value="<?php echo $fullname; ?>"/>
+                    <img src="images/<?php echo $image; ?>" alt="Profile Image" style="width:200px; height:200px;">
+                    <label for="image">
+                        <span class="camera-icon">
+                            <i class="fa-solid fa-camera"></i>
+                        </span>
+                    </label>
                     <input type="file" name="pfp" id="image" accept=".jpg, .jpeg, .png"/>
                 </div>
 
