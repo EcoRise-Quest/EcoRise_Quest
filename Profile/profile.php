@@ -18,9 +18,22 @@ if ($email) {
         $id = $row['id'];
         $fullname = $row['fullname'];
         $image = $row['image']; // Get the user's profile picture URL from the database
+        $_SESSION['image'] = $row['image'];
+
         $bio = $row['bio']; // Get the user's bio from the database
         if (empty($bio)) {
             $bio = 'Bio is not set...';
+        }
+
+        // Fetch the three most recent posts of the user
+        $postLimit = isset($_SESSION['google_loggedin']) ? 4 : 3;
+        $sql = "SELECT title, content FROM posts WHERE user_id='$id' ORDER BY timestamp DESC LIMIT $postLimit";
+        $result = $conn->query($sql);
+        $posts = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $posts[] = $row;
+            }
         }
     } else {
         echo "No user found with email: " . $email;
@@ -40,8 +53,9 @@ if ($email) {
                 if (isset($_SESSION['google_loggedin'])) {
                     echo '<img src="' . $_SESSION['google_picture'] . '" alt="Profile Image">';
                 } elseif (isset($_SESSION['email'])) {
+                    // Display the user's current profile picture
                     if (isset($_SESSION['image']) && !empty($_SESSION['image'])) {
-                        echo '<img src="images/' . $_SESSION['image'] . '" alt="Profile Image" style="width:200px; height:200px;">';
+                        echo '<img src="images/' . $_SESSION['image'] . '" alt="Profile Image" style="width:200px; height:200px; border-top-left-radius: 10px; border-top-right-radius: 10px;">';
                     } else {
                         echo '<img src="images/profile.png" alt="Profile Image" style="width:200px; height:200px;">'; //default image
                     }
@@ -68,13 +82,33 @@ if ($email) {
 
         </section>
 
-        <!--Profile bio settings-->
-        <?php
-        // Only show the bio if the user is not logged in via Google
-        if (!isset($_SESSION['google_loggedin'])) {
-            echo '<div class="profile-bio"><h3> BIO: </h3>' . $bio . '</div>';
-        }
-        ?>
+        <div class="bio-post-wrapper">
+            <!--Profile bio settings-->
+            <?php
+            // Only show the bio if the user is not logged in via Google
+            if (!isset($_SESSION['google_loggedin'])) {
+                echo '<div class="profile-bio"><h3> BIO: </h3>' . $bio . '</div>';
+            }
+            ?>
+
+            <!-- Recent posts -->
+            <section class="recent-posts">
+            <h2>Recent Posts:</h2>
+            <?php
+            if (!empty($posts)):
+                foreach ($posts as $post): ?>
+                    <div class="post">
+                        <h3><?php echo $post['title']; ?></h3>
+                        <p><?php echo $post['content']; ?></p>
+                    </div>
+                <?php
+                endforeach;
+            else:
+                echo '<p>No posts yet.</p>';
+            endif;
+            ?>
+            </section>
+        </div>
     </main>
 </body>
 </html5>
