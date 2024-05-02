@@ -1,4 +1,4 @@
-﻿* {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -95,15 +95,15 @@ header > .navigation-bar{
     height: 100%;
     background-color: #63327F;
     border-radius: 10px;
-    overflow: hidden;
+    margin-right: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    box-shadow: 3px 10px 5px 0 rgba(0,0,0,0.15);
+    box-shadow: 3px 10px 7px 0 rgba(0,0,0,0.15);
 }
 
-.profile-picture {
+.profile > .profile-picture {
     width: 100%;
     height: 200px;
     display: flex;
@@ -151,14 +151,18 @@ header > .navigation-bar{
     color: #ffffff;
 }
 
+/*bio-post-wrapper*/
+.profile-container > .bio-post-wrapper {
+    width: 100%;
+}
+
 .profile-bio {
     height: 7.3rem;
     font-family: "Kanit", sans-serif;
     font-weight: 300;
     font-size: 14.5px;
-    background-color: rgba(202, 135, 241, 0.5);
+    background-color: rgba(202, 135, 241, 0.7);
     flex-grow: 1;
-    margin-left: 20px;
     padding: 20px;
     border-radius: 10px;
     display: flex;
@@ -172,6 +176,44 @@ header > .navigation-bar{
 
 .profile-bio > h3{
     font-size: 18px;
+}
+
+/*Recent posts in profile*/
+.recent-posts {
+    width: 100%;
+    height: fit-content;
+    background-color: rgba(241, 215, 253, 0.80);
+    font-family: "Kanit", sans-serif;
+    font-weight: 300;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 3px 8px 7px 0 rgba(0,0,0,0.15);
+}
+
+.recent-posts > h2 {
+    font-size: 18px;
+    color: #521674;
+    margin-bottom: 10px;
+}
+
+.recent-posts > .post {
+    padding: 3px 0 3px 16px;
+    background: linear-gradient(to right, black 1px, transparent 1px);
+    background-size: 3px 70%;
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+.recent-posts > .post > h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: #521674;
+}
+
+.recent-posts > .post > p {
+    font-size: 13.5px;
 }
 
 /*Profile settings*/
@@ -188,11 +230,11 @@ header > .navigation-bar{
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
 }
 
-.profile-settings img {
+.profile-settings > img {
     display: block;
     margin: 0 auto;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
 }
 
@@ -217,7 +259,7 @@ header > .navigation-bar{
 }
 
 .profile-settings form {
-    margin-top: 20px;
+    margin-top: 18px;
 }
 
 .profile-settings textarea {
@@ -258,4 +300,45 @@ header > .navigation-bar{
     border-radius: 4px;
     border: 1px solid #ddd;
     box-shadow: 3px 3px 5px 0 rgba(0,0,0,0.15);
+}
+
+/*profile settings - change dp*/
+.profile-settings > #form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile-settings > #form > .circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.profile-settings .circle img {
+    border-radius: 50%;
+    position: absolute;
+}
+
+.profile-settings .circle .camera-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #63327f;
+    color: white;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.profile-settings .circle .camera-icon:hover{
+    background-color: #401a55;
+}
+
+#image {
+    display: none;
 }
