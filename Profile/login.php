@@ -75,7 +75,7 @@
         </div>
     </div>
    
-    <div class="right" id="signIn">
+    <div class="right" id="signInRight">
         <p class="txt">Ready to take on eco-friendly challenges?
             <br>Log in to Ecorise Quest and join our community of sustainability champions!</p>
         <img src="images/bg2.jpg" alt="Background image">

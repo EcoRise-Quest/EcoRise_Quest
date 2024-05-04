@@ -8,6 +8,9 @@ if (isset($_SESSION['message'])) {
 // Get the user's email from the session
 $email = isset($_SESSION['email']) ? $_SESSION['email'] : (isset($_SESSION['google_email']) ? $_SESSION['google_email'] : null);
 
+// Define $bio with a default value
+$bio = 'Bio is not set...';
+
 if ($email) {
     // Fetch the user's details from the database
     $sql = "SELECT id, fullname, image, bio FROM users WHERE email='$email'";
@@ -43,7 +46,7 @@ if ($email) {
 }
 ?>
 
-<html5>
+<html5 lang="en" dir="ltr">
 <body>
     <main class="profile-container">
         <section class="profile">
@@ -55,29 +58,31 @@ if ($email) {
                 } elseif (isset($_SESSION['email'])) {
                     // Display the user's current profile picture
                     if (isset($_SESSION['image']) && !empty($_SESSION['image'])) {
-                        echo '<img src="images/' . $_SESSION['image'] . '" alt="Profile Image" style="width:200px; height:200px; border-top-left-radius: 10px; border-top-right-radius: 10px;">';
+                        echo '<img class="pf-img" src="images/' . $_SESSION['image'] . '" alt="Profile Image">';
                     } else {
-                        echo '<img src="images/profile.png" alt="Profile Image" style="width:200px; height:200px;">'; //default image
+                        echo '<img class="pf-img" src="images/profile.png" alt="Profile Image">'; //default image
                     }
                 }
                 ?>
             </div>
 
-            <div class="profile-details">
-                <!-- Display the user's profile details -->
-                <h1 class="heading"><?php echo isset($_SESSION['fullname']) ? $_SESSION['fullname'] : 'Guest'; ?></h1>
-                <p><?php echo isset($_SESSION['email']) ? $_SESSION['email'] : (isset($_SESSION['google_email']) ? $_SESSION['google_email'] : 'Not logged in'); ?></p>
-            </div>
+            <div class="profile-details-container">
+                <div class="profile-details">
+                    <!-- Display the user's profile details -->
+                    <h1 class="heading"><?php echo isset($_SESSION['fullname']) ? $_SESSION['fullname'] : 'Guest'; ?></h1>
+                    <p><?php echo isset($_SESSION['email']) ? $_SESSION['email'] : (isset($_SESSION['google_email']) ? $_SESSION['google_email'] : 'Not logged in'); ?></p>
+                </div>
 
-            <!-- Profile Settings and Logout buttons -->
-            <div class="profile-actions">
-                <?php
-                // Only show the "Profile Settings" button if the user is not logged in via Google
-                if (!isset($_SESSION['google_loggedin'])) {
-                    echo '<button onclick="location.href=\'profile_settings.php\'">Profile Settings</button>';
-                }
-                ?>
-                <button onclick="location.href='logout.php'">Logout</button>
+                <!-- Profile Settings and Logout buttons -->
+                <div class="profile-actions">
+                    <?php
+                    // Only show the "Profile Settings" button if the user is not logged in via Google
+                    if (!isset($_SESSION['google_loggedin'])) {
+                        echo '<button onclick="location.href=\'profile_settings.php\'">Profile Settings</button>';
+                    }
+                    ?>
+                    <button onclick="location.href='logout.php'">Logout</button>
+                </div>
             </div>
 
         </section>

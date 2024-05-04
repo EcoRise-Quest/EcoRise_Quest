@@ -3,7 +3,7 @@ include_once 'header.php';
 ?>
 
 <!DOCTYPE html>
-<html5>
+<html5 lang="en" dir="ltr">
 <body>
     <!--Replace with the actual home page's contents-->
 	<h2>Welcome to Ecorise quest! 🍀</h2>
