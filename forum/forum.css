@@ -1,0 +1,510 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial Nova', sans-serif;
+    background-color: #ffffff;
+    height: 100vh;
+}
+
+/*banner styling*/
+.banner{
+    width: 100%;
+    height: 450px;
+    background-image: url(./img/forum_bg.PNG);
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+}
+.banner > h2{
+    text-align: center;
+    font-size: 36px;
+    padding-top: 70px;
+    font-weight: 500;
+}
+.banner > p{
+    text-align: center;
+    font-size: 18px;
+    padding-top: 25px;
+    padding-bottom: 88px;
+    font-weight: 300;
+}
+.banner > .button{
+    background-color: #9F63C2;
+    color: #fff;
+    padding: 19px 23px;
+    width: fit-content;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 19px;
+    cursor: pointer;
+    border-radius: 7px;
+    box-shadow: 0px 6px 10px rgba(100, 100, 100, 0.7);
+}
+.banner > .button:hover{
+    background-color: #602483;
+}
+
+/*Recent posts heading styling*/
+.post_divider > h2{
+    font-size: 26px;
+    padding: 66px 32px 12px;
+    font-weight: 500;
+}
+.post_divider > hr{
+    width: 93%;
+    margin-left: 20px;
+}
+.post_divider > p{
+    padding: 15px 32px;
+}
+
+/*Posts section styling*/
+/*main post container*/
+.post{
+    width: 92%;
+    margin: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    background-color: #C08CDF;
+    border-radius: 7px;
+}
+
+/*post title and username styling*/
+.post-header{
+    border-radius: 3px;
+    margin-bottom: 7px;
+    margin-left: 15px;
+    width: 10%;
+    height: 100%;
+    padding-top: 3%;
+    padding-bottom: 7%;
+    margin-top: 20px;
+    background-color: #C08CDF;
+}
+.post-header > img{
+    width: 45px;
+    height: 45px;
+    margin-left: 25px;
+    border-radius: 50%;
+    border: 1px solid #F9ECFF;
+    float: left;
+}
+.post-header > h1{
+    font-size: 15px;
+    padding-left: 20px;
+    padding-top: 15%;
+    float: left;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+/*post content section styling*/
+.post-content{
+    background-color: #F9ECFF;
+    border-radius: 3px;
+    width: 84%;
+    height: 20%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+.post-content > h3{
+    padding: 19px 30px;
+}
+.post-content > p{
+    padding: 10px 30px;
+}
+.post-content > img{
+    padding: 19px 30px;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+.post-content > hr{
+    width: 95%;
+    color: #fff;
+    margin-left: 20px;
+}
+
+/*delete post form section styling*/
+form #delete_btn {
+    background-color: #9F63C2;
+    color: #fff;
+    padding: 17px 23px;
+    width: fit-content;
+    display: block;
+    text-align: center;
+    margin: 30px auto;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 7px;
+    border: none;
+    box-shadow: 0px 6px 10px rgba(100, 100, 100, 0.7);
+}
+form #delete_btn:hover{
+    background-color: #602483;
+}
+
+/*create post file styling*/
+.new_post{
+    background-color: #F9ECFF;
+    width: 75%;
+    max-height: 85%;
+    margin: auto;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+.new_post > h2{
+    text-align: center;
+    font-weight: 500;
+}
+.new_post > label{
+    font-size: 20px;
+    color: #000000;
+}
+.new_post > #title, #content{
+    border-radius: 5px;
+    border: 1px solid #504b4b;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    width: 100%;
+    resize: none;
+}
+.upload{
+    width: 100%;
+    max-height: 500px;
+    background: #C08CDF;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+}
+.upload .icon{
+    font-size: 70px;
+    color: #fff;
+}
+.upload .up_img{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+.upload p{
+    color: #ffffff;
+    font-size: 14px;
+    display: block;
+    padding-bottom: 12px;
+}
+.new_post > #post{
+    display: block;
+    width: 80px;
+    padding: 10px 0;
+    margin: auto;
+    border-radius: 5px;
+    background: #9F63C2;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.new_post > #post:hover{
+    background: #602483;
+}
+#post_image{
+    width: 50%;
+    margin-left: 195px;
+}
+/*----------MEDIA QUERIES------------*/
+
+/*For tablet*/
+@media only screen and (max-width: 991px){
+    /*post title and username styling*/
+.post-header{
+    background-color: #F9ECFF;
+    margin-bottom: 7px;
+    margin-left: 15px;
+    width: 10%;
+    height: 100%;
+    padding-top: 3%;
+    padding-bottom: 7%;
+    margin-top: 20px;
+    background-color: #C08CDF;
+}
+.post-header > img{
+    width: 45px;
+    height: 45px;
+    margin-left: 10px;
+    border-radius: 50%;
+    border: 1px solid #F9ECFF;
+    float: left;
+}
+.post-header > h1{
+    font-size: 15px;
+    padding-left: 10px;
+    padding-top: 35%;
+    float: left;
+    text-transform: uppercase;
+    color: #fff;
+}
+#post_image{
+    width: 50%;
+    margin-left: 105px;
+}
+}
+/*For phones (upto 767px)*/
+@media only screen and (max-width: 767px){
+
+/*banner styling*/
+    .banner{
+        width: 100%;
+        height: 350px;
+        background-image: url(./img/forum_bg.PNG);
+        background-size: cover;
+        background-position: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .banner > h2{
+        text-align: center;
+        font-size: 22px;
+        padding-top: 70px;
+        font-weight: 500;
+    }
+    .banner > p{
+        text-align: center;
+        font-size: 11px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        font-weight: 300;
+    }
+    .banner > .button{
+        background-color: #9F63C2;
+        color: #fff;
+        padding: 17px 23px;
+        width: fit-content;
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+        text-decoration: none;
+        font-weight: bolder;
+        font-size: 15px;
+        cursor: pointer;
+        border-radius: 7px;
+        box-shadow: 0px 6px 10px rgba(100, 100, 100, 0.7);
+    }
+    .banner > .button:hover{
+        background-color: #602483;
+    }
+
+/*Recent posts heading styling*/
+    .post_divider > h2{
+        font-size: 26px;
+        padding: 66px 32px 12px;
+        font-weight: 500;
+    }
+    .post_divider > hr{
+        width: 90%;
+        margin-left: 20px;
+    }
+    .post_divider > p{
+        padding: 15px 32px;
+    }
+
+/*Posts section styling*/
+/*main post container*/
+    .post{
+        display: block;
+        width: 99%;
+        margin-right: auto;
+        padding: 10px;
+        margin-bottom: 2px;
+        background-color: #fff;
+    }
+
+/*post title and username styling*/
+    .post-header{
+        border-radius: 3px;
+        background-color: #F9ECFF;
+        margin-bottom: 7px;
+        width: 100%;
+        height: 70%;
+        padding-top: 3%;
+        padding-bottom: 10%;
+        margin-left: 0;
+    }
+    .post-header > img{
+        width: 31px;
+        height: 31px;
+        margin-left: 25px;
+        border-radius: 50%;
+        border: 1px solid #602483;
+        float: left;
+    }
+    .post-header > h1{
+        font-size: 15px;
+        padding-left: 10px;
+        padding-top: 1%;
+        float: left;
+        text-transform: uppercase;
+        color: #000;
+    }
+
+/*post content section styling*/
+    .post-content{
+        background-color: #F9ECFF;
+        border-radius: 3px;
+        width: 100%;
+        height: 40%;
+        margin-left: 0;
+    }
+    .post-content > h3{
+        padding: 19px 30px;
+    }
+    .post-content > p{
+        padding: 10px 30px;
+    }
+    .post-content > img{
+        padding: 19px 30px;
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+    }
+    .post-content > hr{
+        width: 95%;
+        color: #fff;
+        margin-left: 20px;
+    }
+
+/*delete post form section styling*/
+    form #delete_btn {
+        background-color: #9F63C2;
+        color: #fff;
+        padding: 17px 23px;
+        width: fit-content;
+        display: block;
+        text-align: center;
+        margin: 30px auto;
+        text-decoration: none;
+        font-weight: bolder;
+        font-size: 15px;
+        cursor: pointer;
+        border-radius: 7px;
+        border: none;
+        box-shadow: 0px 6px 10px rgba(100, 100, 100, 0.7);
+    }
+    form #delete_btn:hover{
+        background-color: #602483;
+    }
+
+/*create post file styling*/
+    .new_post{
+        background-color: #F9ECFF;
+        width: 75%;
+        max-height: 85%;
+        margin: auto;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+    .new_post > h2{
+        text-align: center;
+        font-weight: 500;
+    }
+    .new_post > label{
+        font-size: 20px;
+        color: #000000;
+    }
+    .new_post > #title, #content{
+        border-radius: 5px;
+        border: 1px solid #504b4b;
+        padding-bottom: 12px;
+        margin-bottom: 12px;
+        margin-top: 12px;
+        width: 100%;
+        resize: none;
+    }
+    .upload{
+        width: 100%;
+        max-height: 500px;
+        background: #C08CDF;
+        margin-bottom: 30px;
+        border-radius: 6px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    }
+    .upload .icon{
+        font-size: 70px;
+        color: #fff;
+    }
+    .upload .up_img{
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 6px;
+    }
+    .upload p{
+        color: #ffffff;
+        font-size: 14px;
+        display: block;
+        padding-bottom: 12px;
+    }
+    .new_post > #post{
+        display: block;
+        width: 80px;
+        padding: 10px 0;
+        margin: auto;
+        border-radius: 5px;
+        background: #9F63C2;
+        color: #fff;
+        font-weight: 500;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .new_post > #post:hover{
+        background: #602483;
+    }
+    #post_image{
+        width: 50%;
+        margin-left: 25px;
+    }
+  /*  .new_post > #post_image{
+        border: 1px solid purple;
+        width: 100%;
+        height: 30%;
+        padding-top: 70px;
+    }
+    .new_post > input [type="submit"]{
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-top: 20px;
+        background-color: #63327F;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }*/
+}
