@@ -47,9 +47,11 @@ if ($result->num_rows > 0) {
         } else {
             $user_image = 'img/profile.png' . (!empty($row['user_image']) ? $row['user_image'] : 'profile.png');
         }
-        echo '<img src="' . $user_image . '" alt="Profile Image">'; // Display the user's profile image
+        echo
+        '<div class="profile_username">
+        <img src="' . $user_image . '" alt="Profile Image">'; // Display the user's profile image
 
-        echo '<h1 class="username">' . $row['fullname'] . '</h1>'; // Display the user's name
+        echo '<h1 class="username">' . $row['fullname'] . '</h1>'. '</div>'; // Display the user's name
          //Delete post 
         // If the post was created by the currently logged-in user, display the "Delete" button
         if (isset($_SESSION['id']) && $_SESSION['id'] == $row['user_id']) {
