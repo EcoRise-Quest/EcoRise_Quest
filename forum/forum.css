@@ -69,12 +69,13 @@ body {
 /*Posts section styling*/
 /*main post container*/
 .post{
+    display: flex;
     width: 92%;
     margin: auto;
-    padding: 10px;
+    padding: 1px;
     margin-bottom: 10px;
     display: flex;
-    background-color: #C08CDF;
+    background-color: #f9ecff;
     border-radius: 7px;
 }
 
@@ -82,29 +83,30 @@ body {
 .post-header{
     border-radius: 3px;
     margin-bottom: 7px;
-    margin-left: 15px;
     width: 10%;
     height: 100%;
-    padding-top: 3%;
-    padding-bottom: 7%;
     margin-top: 20px;
-    background-color: #C08CDF;
+    background-color: #f9ecff;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
 }
-.post-header > img{
+.post-header .profile_username img{
     width: 45px;
     height: 45px;
-    margin-left: 25px;
     border-radius: 50%;
-    border: 1px solid #F9ECFF;
+    border: 1px solid #602483;
+    margin-bottom:1.5vw;
     float: left;
 }
-.post-header > h1{
+.post-header .profile_username h1{
     font-size: 15px;
-    padding-left: 20px;
-    padding-top: 15%;
     float: left;
     text-transform: uppercase;
-    color: #fff;
+    color: black;
+    margin:auto;
+
 }
 
 /*post content section styling*/
@@ -115,7 +117,6 @@ body {
     height: 20%;
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 10px;
 }
 .post-content > h3{
     padding: 19px 30px;
@@ -126,46 +127,55 @@ body {
 .post-content > img{
     padding: 19px 30px;
     width: 100%;
-    height: 100%;
+    height: auto;
+    max-height: 70vh;
     border-radius: 4px;
 }
 .post-content > hr{
     width: 95%;
     color: #fff;
     margin-left: 20px;
+    
 }
 
 /*delete post form section styling*/
-form #delete_btn {
-    background-color: #9F63C2;
-    color: #fff;
-    padding: 17px 23px;
-    width: fit-content;
-    display: block;
+.delete_wrapper{
     text-align: center;
-    margin: 30px auto;
+    width:100%;
+    margin-top:20px;                                                                                                                             
+}
+.delete_btn {
+    background-color: #F9ECFF;
+    color: rgb(153, 12, 12);
+    display: inline-block;
+    padding: 18%;
+    text-align: center;
     text-decoration: none;
     font-weight: bolder;
     font-size: 15px;
     cursor: pointer;
-    border-radius: 7px;
+    border-radius: 5px;
     border: none;
-    box-shadow: 0px 6px 10px rgba(100, 100, 100, 0.7);
 }
-form #delete_btn:hover{
+form .delete_btn:hover{
     background-color: #602483;
+}
+
+.profile_username{
+    display: flex;
+    flex-direction: column;
 }
 
 /*create post file styling*/
 .new_post{
-    background-color: #F9ECFF;
     width: 75%;
-    max-height: 85%;
+    max-height: 100%;
     margin: auto;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
-}
+    background-color: #C08CDF;
+    }
 .new_post > h2{
     text-align: center;
     font-weight: 500;
@@ -184,10 +194,11 @@ form #delete_btn:hover{
     resize: none;
 }
 .upload{
+    margin-top: 20px;
     width: 100%;
-    max-height: 500px;
-    background: #C08CDF;
-    margin-bottom: 30px;
+    height: 25vh;
+    background: #F9ECFF;
+    margin-bottom: 3vw;
     border-radius: 6px;
     overflow: hidden;
     display: flex;
@@ -196,33 +207,32 @@ form #delete_btn:hover{
     flex-direction: column;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
 }
-.upload .icon{
-    font-size: 70px;
-    color: #fff;
-}
+
 .upload .up_img{
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 12vw;
+    font-weight: 400;
     margin-bottom: 6px;
 }
 .upload p{
-    color: #ffffff;
-    font-size: 14px;
+    color: #000;
+    font-size: 1.5vw;
     display: block;
-    padding-bottom: 12px;
+    padding-bottom: 2vw;
+    padding-top: 4vw;
 }
+/*post button styling*/
 .new_post > #post{
     display: block;
-    width: 80px;
-    padding: 10px 0;
     margin: auto;
-    border-radius: 5px;
-    background: #9F63C2;
+    width: 50%;
+    padding: 2vw;
+    background-color: #63327F;
     color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
     font-weight: 500;
     font-size: 16px;
-    border: none;
-    cursor: pointer;
     transition: all 0.3s ease;
 }
 .new_post > #post:hover{
@@ -230,44 +240,111 @@ form #delete_btn:hover{
 }
 #post_image{
     width: 50%;
-    margin-left: 195px;
+    margin-left: 19vw;
 }
 /*----------MEDIA QUERIES------------*/
 
 /*For tablet*/
 @media only screen and (max-width: 991px){
     /*post title and username styling*/
-.post-header{
-    background-color: #F9ECFF;
-    margin-bottom: 7px;
-    margin-left: 15px;
-    width: 10%;
-    height: 100%;
-    padding-top: 3%;
-    padding-bottom: 7%;
-    margin-top: 20px;
-    background-color: #C08CDF;
-}
-.post-header > img{
-    width: 45px;
-    height: 45px;
-    margin-left: 10px;
-    border-radius: 50%;
-    border: 1px solid #F9ECFF;
-    float: left;
-}
-.post-header > h1{
-    font-size: 15px;
-    padding-left: 10px;
-    padding-top: 35%;
-    float: left;
-    text-transform: uppercase;
-    color: #fff;
-}
-#post_image{
-    width: 50%;
-    margin-left: 105px;
-}
+    .post-header{
+        margin-bottom: 7px;
+        width: 10%;
+        height: 100%;
+        padding-top: 3%;
+        padding-bottom: 7%;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f9ecff;
+    }
+    .post-header > img{
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        float: left;
+    }
+    .post-header > h1{
+        font-size: 15px;
+        float: left;
+        text-transform: uppercase;
+        color: #fff;
+    }
+    #post_image{
+        width: 50%;
+        margin-left: 105px;
+    }
+    .post-content > img{
+        width: 100%;
+        height: auto;
+        max-height: 100vh;
+    }
+
+/*upload post styling*/
+    .upload{
+        margin-top: 1vw;
+        width: 100%;
+        height: 25vh;
+        margin-bottom: 1vw;
+        border-radius: 6px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #F9ECFF;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    }
+    .upload .up_img{
+        font-size: 12vw;
+        font-weight: 400;
+        margin-bottom: 2vw;
+    }
+    .upload p{
+        color: #000;
+        display: block;
+        padding-bottom: 2vw;
+        padding-top: 4vw;
+    }
+/*post button styling*/
+    .new_post > #post{
+        display: block;
+        width: 100%;
+        padding: 1.5vw;
+        background-color: #63327F;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 16px;
+        transition: all 0.3s ease;
+    }
+    .new_post > #post:hover{
+        background-color: #602483;
+    }
+
+/*new post creation styling*/
+    .new_post{      
+        padding: 20px;
+        width: 75%;
+        max-height: 85%;
+        background-color: #C08CDF;
+    }
+    #post_image{
+        width: 50%;
+        margin-left: 16vw;
+    }
+    .delete_btn{
+        align-self: flex-end;
+        background-color: #F9ECFF;
+        color: rgb(153, 12, 12);
+        display:inline;
+        padding: 18%;
+        border: none;
+        border-radius: 5px;
+    }
 }
 /*For phones (upto 767px)*/
 @media only screen and (max-width: 767px){
@@ -332,39 +409,51 @@ form #delete_btn:hover{
 /*main post container*/
     .post{
         display: block;
-        width: 99%;
+        width: 95%;
         margin-right: auto;
-        padding: 10px;
-        margin-bottom: 2px;
-        background-color: #fff;
+        padding: 3vw;
+        margin-bottom: 1vw;
+        background-color: #f9ecff;
     }
 
 /*post title and username styling*/
     .post-header{
         border-radius: 3px;
         background-color: #F9ECFF;
-        margin-bottom: 7px;
+        display: flex;
+        margin-bottom: 1vh;
         width: 100%;
         height: 70%;
         padding-top: 3%;
-        padding-bottom: 10%;
-        margin-left: 0;
+        padding-bottom: 4%;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid #504b4b;
     }
-    .post-header > img{
-        width: 31px;
-        height: 31px;
-        margin-left: 25px;
+    .profile_username{
+        flex-direction: row;
+        width:95%;
+        justify-content: none;
+        align-items: none;
+    }
+    .post-header .profile_username img{
+        width: 35px;
+        height: 35px;
         border-radius: 50%;
         border: 1px solid #602483;
-        float: left;
+        margin:0;
+        padding:0;
+        margin-left:2vw;
+        margin-right:2vw;
     }
-    .post-header > h1{
+    .post-header .profile_username h1.username{
         font-size: 15px;
-        padding-left: 10px;
-        padding-top: 1%;
-        float: left;
+        margin-top: 1vh;
         text-transform: uppercase;
         color: #000;
+        margin-right:0;
+        margin-left:0;
     }
 
 /*post content section styling*/
@@ -376,53 +465,61 @@ form #delete_btn:hover{
         margin-left: 0;
     }
     .post-content > h3{
-        padding: 19px 30px;
+        padding: 2vw 6vw;
     }
     .post-content > p{
-        padding: 10px 30px;
+        padding: 3vw 4vw;
     }
     .post-content > img{
         padding: 19px 30px;
         width: 100%;
-        height: 100%;
+        height: auto;
+        max-height: 100vh;
         border-radius: 4px;
     }
     .post-content > hr{
         width: 95%;
         color: #fff;
-        margin-left: 20px;
+        margin-left: 2vw;
     }
 
 /*delete post form section styling*/
-    form #delete_btn {
-        background-color: #9F63C2;
+    .delete_wrapper{
+        display: inline;
+        width: 50%;
+        padding: auto;
+        margin-right:18px;
+    }
+    .delete_btn {
         color: #fff;
-        padding: 17px 23px;
-        width: fit-content;
-        display: block;
         text-align: center;
-        margin: 30px auto;
         text-decoration: none;
         font-weight: bolder;
         font-size: 15px;
         cursor: pointer;
-        border-radius: 7px;
+        border-radius: 6px;
         border: none;
         box-shadow: 0px 6px 10px rgba(100, 100, 100, 0.7);
     }
-    form #delete_btn:hover{
-        background-color: #602483;
+    .delete_btn .icon{
+        color: #a94040;
+        border: none;
+    }
+    form .delete_btn:hover{
+        background-color: #C08CDF;
+    }
+    .delete_btn .icon:hover{
+        color: #a94040;
     }
 
 /*create post file styling*/
     .new_post{
-        background-color: #F9ECFF;
-        width: 75%;
-        max-height: 85%;
-        margin: auto;
-        padding: 20px;
-        margin-bottom: 20px;
+        background-color: #C08CDF;
+        padding: 5vw;
         border-radius: 5px;
+        width: 80vw;
+        height: 100vh;
+        margin: auto;
     }
     .new_post > h2{
         text-align: center;
@@ -442,10 +539,11 @@ form #delete_btn:hover{
         resize: none;
     }
     .upload{
+        margin-top: 1vw;
         width: 100%;
-        max-height: 500px;
-        background: #C08CDF;
-        margin-bottom: 30px;
+        height: 20vh;
+        background: #F9ECFF;
+        margin-bottom: 1vw;
         border-radius: 6px;
         overflow: hidden;
         display: flex;
@@ -454,33 +552,36 @@ form #delete_btn:hover{
         flex-direction: column;
         box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
     }
+
+    /*--------REMOVE THIS LATER-------------*/
     .upload .icon{
-        font-size: 70px;
-        color: #fff;
+        font-size: 10vw;
+        color: #747171;
     }
+
     .upload .up_img{
-        font-size: 20px;
-        font-weight: 500;
-        margin-bottom: 6px;
+        font-size: 12vw;
+        font-weight: 400;
+        margin-bottom: 2vw;
     }
     .upload p{
-        color: #ffffff;
-        font-size: 14px;
+        color: #000;
+        font-size: 2.5vw;
         display: block;
-        padding-bottom: 12px;
+        padding-bottom: 2vw;
+        padding-top: 4vw;
     }
     .new_post > #post{
         display: block;
-        width: 80px;
-        padding: 10px 0;
-        margin: auto;
-        border-radius: 5px;
-        background: #9F63C2;
+        width: 100%;
+        padding: 20px;
+        background-color: #63327F;
         color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
         font-weight: 500;
         font-size: 16px;
-        border: none;
-        cursor: pointer;
         transition: all 0.3s ease;
     }
     .new_post > #post:hover{
@@ -488,23 +589,6 @@ form #delete_btn:hover{
     }
     #post_image{
         width: 50%;
-        margin-left: 25px;
+        margin-left: 4vw;
     }
-  /*  .new_post > #post_image{
-        border: 1px solid purple;
-        width: 100%;
-        height: 30%;
-        padding-top: 70px;
-    }
-    .new_post > input [type="submit"]{
-        display: block;
-        width: 100%;
-        padding: 10px;
-        margin-top: 20px;
-        background-color: #63327F;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }*/
 }
