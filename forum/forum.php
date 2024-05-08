@@ -47,9 +47,21 @@ if ($result->num_rows > 0) {
         } else {
             $user_image = 'img/profile.png' . (!empty($row['user_image']) ? $row['user_image'] : 'profile.png');
         }
-        echo '<img src="' . $user_image . '" alt="Profile Image">'; // Display the user's profile image
+        echo
+        '<div class="profile_username">
+        <img src="' . $user_image . '" alt="Profile Image">'; // Display the user's profile image
 
-        echo '<h1>' . $row['fullname'] . '</h1>'; // Display the user's name
+        echo '<h1 class="username">' . $row['fullname'] . '</h1>'. '</div>'; // Display the user's name
+         //Delete post 
+        // If the post was created by the currently logged-in user, display the "Delete" button
+        if (isset($_SESSION['id']) && $_SESSION['id'] == $row['user_id']) {
+            echo '<form class="del_form" action="delete_post.php" method="POST">';
+            echo '<input type="hidden" name="post_id" value="' . $row['id'] . '">';
+            echo '<div class="delete_wrapper">';
+            echo '<button type="submit" class="delete_btn"><i class="fa-solid fa-trash-can icon"></i></button>';
+            echo '</div>';
+            echo '</form>';
+        }
         echo '</div>';
         echo '<div class="post-content">';
         echo '<h3>' . $row['title'] . '</h3>'; // Display the post title
@@ -62,16 +74,9 @@ if ($result->num_rows > 0) {
         echo '</div>';
 
         echo '</div>';
-        //Delete post 
-        // If the post was created by the currently logged-in user, display the "Delete" button
-        if (isset($_SESSION['id']) && $_SESSION['id'] == $row['user_id']) {
-            echo '<form action="delete_post.php" method="POST">';
-            echo '<input type="hidden" name="post_id" value="' . $row['id'] . '">';
-            echo '<input type="submit" id="delete_btn" value="Delete Post">';
-            echo '</form></br></br>';
-        }
-
     }
+    
+    echo'</br></br></br>';
 } else {
     echo "No posts found.";
 }
